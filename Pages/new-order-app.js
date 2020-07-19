@@ -55,18 +55,30 @@ const drinkFour = document.getElementById('drink-four');
 const drinkFive = document.getElementById('drink-five');
 
 //Server button styling to keep pressed and display a toggle dynamic
+const clearServerToggles = () => {
+    serverOne.style.borderStyle = 'none';
+    serverTwo.style.borderStyle = 'none';
+    serverThree.style.borderStyle = 'none';
+    serverFour.style.borderStyle = 'none';
+    serverFive.style.borderStyle = 'none';
+}
 serverOne.onclick = function(e){
+    clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
 }
 serverTwo.onclick = function(e){
+    clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
 }
 serverThree.onclick = function(e){
+    clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
 }
 serverFour.onclick = function(e){
+    clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
 }
 serverFive.onclick = function(e){
+    clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
 }
