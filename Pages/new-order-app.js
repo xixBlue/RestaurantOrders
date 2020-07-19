@@ -54,6 +54,76 @@ const drinkThree = document.getElementById('drink-three');
 const drinkFour = document.getElementById('drink-four');
 const drinkFive = document.getElementById('drink-five');
 
+//Declaring Submit/Complete Order Buttons
+const submit = document.getElementById('submit');
+const completeOrder = document.getElementById('complete-order');
+
+/*
+    1. Create an order counter
+    2. Create an array based on the order counter
+    4. Table button creates new array with
+        Order Number
+        Server
+        Table
+    4. Submit button would push to Array and populate Order Created
+        Name/Order Object [{
+            name: name
+            appetizers: {      //add properties to this object as they are ordered, or increment quantity
+                app1: quantity
+            }
+            entree:{
+                entree: quantity
+            }
+            dessert:{
+                dessert: quantity
+            }
+            drink: drink
+        }, ... other named object
+    5. Complete Order button would push finished array to file in html format existing orders to interpret
+
+    [orderNumber, server, table, name/order array]
+    {order: orderNumber, server: serverNumber, order: []}
+    object.order.push(new table/individ order)
+     
+*/
+
+const orderCounter = 105; 
+
+const orderObject = {
+    orderNumber: orderCounter,
+    server: 0,
+    table: 0,
+    orderItems: []
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Server button styling to keep pressed and display a toggle dynamic
 const clearServerToggles = () => {
     serverOne.style.borderStyle = 'none';
@@ -65,20 +135,31 @@ const clearServerToggles = () => {
 serverOne.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.server = 1;
 }
 serverTwo.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.server = 2;
 }
 serverThree.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.server = 3;
 }
 serverFour.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.server = 4;
 }
 serverFive.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.server = 5;
 }
+
+
+
+
+//Testing Zone
+console.log(orderObject);

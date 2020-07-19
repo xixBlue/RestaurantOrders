@@ -1,6 +1,15 @@
-const serverOne = Document.getElementById('server-one');
+var orderCounter = 100;
 
-serverOne.onclick = function(e){
-    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'outset');
-    this.style.backgroundColor = 'red';
+if (document.getElementById('new-order-button') !== null) {
+    const newOrder = document.getElementById('new-order-button');
+    newOrder.onclick = function (e) {
+        ++orderCounter;
+    }
 }
+
+/*
+newOrder.onclick = function (e) {
+    ++orderCounter;
+}
+*/
+
