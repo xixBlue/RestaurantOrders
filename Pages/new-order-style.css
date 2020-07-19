@@ -1,0 +1,74 @@
+button{
+    height: 50px;
+    width: 100px;
+}
+label{
+    margin: 0 5% 0 0;
+}
+#container{
+    width: 1920px;
+    height: 830px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+}
+.servers{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border: 2px solid black;
+    padding: 0 0 12.45% 1%;   
+}
+.servers > div {
+    margin: 7%;
+}
+.tables{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    padding: 0 0 12.4% 1%;
+    
+}
+.table-group-one, .table-group-two, .table-group-three {
+    margin: 4%;
+    display: flex;
+    flex-direction: row;
+}
+.table-group-one > div, .table-group-two > div, .table-group-three > div{
+    margin: 2%;
+}
+.order{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    padding: 0 0 1% 1%;
+
+}
+.order > div {
+    margin: 3%;
+    display: flex;
+    flex-direction: row;
+}
+.name, .submit{
+    align-items: flex-end;
+    margin: 2%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.apps > div, .entrees-one > div, .entrees-two > div, .desserts > div, .drinks > div{
+    margin: 0 2%;
+}
+
+#submit{
+    width: 200px;
+}
+.created-order{
+    margin: 2%;
+}
