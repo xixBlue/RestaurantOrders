@@ -19,7 +19,7 @@ const tableNine = document.getElementById('table-nine');
 const tableTen = document.getElementById('table-ten');
 const tableEleven = document.getElementById('table-eleven');
 const tableTwelve = document.getElementById('table-twelve');
-const tableThirteeen = document.getElementById('table-thirteen');
+const tableThirteen = document.getElementById('table-thirteen');
 const tableFourteen = document.getElementById('table-fourteen');
 const tableFifteen = document.getElementById('table-fifteen');
 
@@ -87,7 +87,7 @@ const completeOrder = document.getElementById('complete-order');
      
 */
 
-const orderCounter = 105; 
+let orderCounter = 105; 
 
 const orderObject = {
     orderNumber: orderCounter,
@@ -156,6 +156,116 @@ serverFive.onclick = function(e){
     clearServerToggles();
     this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
     orderObject.server = 5;
+}
+//Table Button Click Handlers Section:
+const clearTableToggles = () => {
+    tableOne.style.borderStyle = 'none';
+    tableTwo.style.borderStyle = 'none';
+    tableThree.borderStyle = 'none';
+    tableFour.style.borderStyle = 'none';
+    tableFive.style.borderStyle = 'none';
+    tableSix.style.borderStyle = 'none';
+    tableSeven.style.borderStyle = 'none';
+    tableEight.style.borderStyle = 'none';
+    tableNine.borderStyle = 'none';
+    tableTen.style.borderStyle = 'none';
+    tableEleven.style.borderStyle = 'none';
+    tableTwelve.style.borderStyle = 'none';
+    tableThirteen.style.borderStyle = 'none';
+    tableFourteen.style.borderStyle = 'none';
+    tableFifteen.style.borderStyle = 'none';
+}
+tableOne.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 1;
+} 
+tableTwo.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 2;
+}  
+tableThree.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 3;
+} 
+tableFour.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 4;
+} 
+tableFive.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 5;
+} 
+tableSix.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 6;
+} 
+tableSeven.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 7;
+} 
+tableEight.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 8;
+} 
+tableNine.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 9;
+} 
+tableTen.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 10;
+} 
+tableEleven.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 11;
+} 
+tableTwelve.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 12;
+} 
+tableThirteen.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 13;
+} 
+tableFourteen.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 14;
+} 
+tableFifteen.onclick = function(e){
+    clearTableToggles();
+    this.style.borderStyle = (this.style.borderStyle !== 'inset' ? 'inset' : 'none');
+    orderObject.table = 15;
+} 
+
+
+
+
+
+
+
+
+
+
+
+//CompleteOrder Button Function
+completeOrder.onclick = function(e){
+    console.log(orderObject);
+    orderCounter++;
+    orderObject.orderNumber = orderCounter;
 }
 
 
