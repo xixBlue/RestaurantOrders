@@ -1,11 +1,15 @@
-.buttons {
-    top: 45%;
-    left: 30%;
+.buttons{
+    top: 40%;
+    left: 25%;
     display: flex;
     position: fixed;
     justify-content: center;
     align-items: center;
+    border: 10px solid black;
+    border-radius: 2%;
+    padding: 5%
 }
+
 
 #new-order, #existing-orders {
     display: flex;

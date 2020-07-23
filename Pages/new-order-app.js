@@ -95,10 +95,8 @@ let deleteEnabled = false;
      
 */
 
-let orderCounter = 105; 
-
 const orderObject = {
-    orderNumber: orderCounter,
+    orderNumber: 0,
     server: 0,
     table: 0,
     customerName: '',
@@ -109,6 +107,24 @@ const orderObject = {
         drinks: {}
     }
 }
+
+let orderCounter;
+if (localStorage.length === 0) {
+  orderCounter = 100;
+}
+else {
+  let highestOrderSoFar = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    //have to cycle through like this bc localStorage orders numbers strangely ...
+    const currentKey = new Number(localStorage.key(i));
+    if (currentKey > highestOrderSoFar) {
+      highestOrderSoFar = currentKey;
+    }
+  }
+  orderCounter = highestOrderSoFar + 1;
+}
+orderObject.orderNumber = orderCounter;
+
 
 //Server button styling to keep pressed and display a toggle dynamic
 const clearServerToggles = () => {
@@ -261,266 +277,497 @@ appOne.onclick = function(e) {
             //orderObject.orderItems.appetizers.appOne = 0;
             this.style.borderStyle = 'none';
         }
-    }   
+    }  
+    displayOrderHtml(orderObject); 
 }
 appTwo.onclick = function(e) {
     //check if appetizer is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.appetizers.appTwo) {
-        orderObject.orderItems.appetizers.appTwo++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.appetizers.appTwo) {
+            orderObject.orderItems.appetizers.appTwo++;
+        } else {
+            orderObject.orderItems.appetizers.appTwo = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.appetizers.appTwo = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.appetizers.appTwo > 1) {
+            orderObject.orderItems.appetizers.appTwo--;
+        } else {
+            delete orderObject.orderItems.appetizers.appTwo;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 appThree.onclick = function(e) {
     //check if appetizer is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.appetizers.appThree) {
-        orderObject.orderItems.appetizers.appThree++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.appetizers.appThree) {
+            orderObject.orderItems.appetizers.appThree++;
+        } else {
+            orderObject.orderItems.appetizers.appThree = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.appetizers.appThree = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.appetizers.appThree > 1) {
+            orderObject.orderItems.appetizers.appThree--;
+        } else {
+            delete orderObject.orderItems.appetizers.appThree;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 appFour.onclick = function(e) {
     //check if appetizer is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.appetizers.appFour) {
-        orderObject.orderItems.appetizers.appFour++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.appetizers.appFour) {
+            orderObject.orderItems.appetizers.appFour++;
+        } else {
+            orderObject.orderItems.appetizers.appFour = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.appetizers.appFour = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.appetizers.appFour > 1) {
+            orderObject.orderItems.appetizers.appFour--;
+        } else {
+            delete orderObject.orderItems.appetizers.appFour;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 appFive.onclick = function(e) {
     //check if appetizer is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.appetizers.appFive) {
-        orderObject.orderItems.appetizers.appFive++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.appetizers.appFive) {
+            orderObject.orderItems.appetizers.appFive++;
+        } else {
+            orderObject.orderItems.appetizers.appFive = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.appetizers.appFive = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.appetizers.appFive > 1) {
+            orderObject.orderItems.appetizers.appFive--;
+        } else {
+            delete orderObject.orderItems.appetizers.appFive;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeOne.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeOne) {
-        orderObject.orderItems.entrees.entreeOne++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeOne) {
+            orderObject.orderItems.entrees.entreeOne++;
+        } else {
+            orderObject.orderItems.entrees.entreeOne = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeOne = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeOne > 1) {
+            orderObject.orderItems.entrees.entreeOne--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeOne;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeTwo.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeTwo) {
-        orderObject.orderItems.entrees.entreeTwo++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeTwo) {
+            orderObject.orderItems.entrees.entreeTwo++;
+        } else {
+            orderObject.orderItems.entrees.entreeTwo = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeTwo = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeTwo > 1) {
+            orderObject.orderItems.entrees.entreeTwo--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeTwo;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeThree.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeThree) {
-        orderObject.orderItems.entrees.entreeThree++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeThree) {
+            orderObject.orderItems.entrees.entreeThree++;
+        } else {
+            orderObject.orderItems.entrees.entreeThree = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeThree = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeThree > 1) {
+            orderObject.orderItems.entrees.entreeThree--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeThree;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeFour.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeFour) {
-        orderObject.orderItems.entrees.entreeFour++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeFour) {
+            orderObject.orderItems.entrees.entreeFour++;
+        } else {
+            orderObject.orderItems.entrees.entreeFour = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeFour = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeFour > 1) {
+            orderObject.orderItems.entrees.entreeFour--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeFour;
+            //orderObject.orderItems.appetizers.appOne = 0;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeFive.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeFive) {
-        orderObject.orderItems.entrees.entreeFive++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeFive) {
+            orderObject.orderItems.entrees.entreeFive++;
+        } else {
+            orderObject.orderItems.entrees.entreeFive = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeFive = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeFive > 1) {
+            orderObject.orderItems.entrees.entreeFive--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeFive;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeSix.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeSix) {
-        orderObject.orderItems.entrees.entreeSix++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeSix) {
+            orderObject.orderItems.entrees.entreeSix++;
+        } else {
+            orderObject.orderItems.entrees.entreeSix = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeSix = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeSix > 1) {
+            orderObject.orderItems.entrees.entreeSix--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeSix;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeSeven.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeSeven) {
-        orderObject.orderItems.entrees.entreeSeven++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeSeven) {
+            orderObject.orderItems.entrees.entreeSeven++;
+        } else {
+            orderObject.orderItems.entrees.entreeSeven = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeSeven = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeSeven > 1) {
+            orderObject.orderItems.entrees.entreeSeven--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeSeven;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeEight.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeEight) {
-        orderObject.orderItems.entrees.entreeEight++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeEight) {
+            orderObject.orderItems.entrees.entreeEight++;
+        } else {
+            orderObject.orderItems.entrees.entreeEight = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeEight = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeEight > 1) {
+            orderObject.orderItems.entrees.entreeEight--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeEight;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeNine.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeNine) {
-        orderObject.orderItems.entrees.entreeNine++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeNine) {
+            orderObject.orderItems.entrees.entreeNine++;
+        } else {
+            orderObject.orderItems.entrees.entreeNine = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeNine = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeNine > 1) {
+            orderObject.orderItems.entrees.entreeNine--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeNine;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 entreeTen.onclick = function(e) {
     //check if Entree is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.entrees.entreeTen) {
-        orderObject.orderItems.entrees.entreeTen++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.entrees.entreeTen) {
+            orderObject.orderItems.entrees.entreeTen++;
+        } else {
+            orderObject.orderItems.entrees.entreeTen = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.entrees.entreeTen = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.entrees.entreeTen > 1) {
+            orderObject.orderItems.entrees.entreeTen--;
+        } else {
+            delete orderObject.orderItems.entrees.entreeTen;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 dessertOne.onclick = function(e) {
     //check if Dessert is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.desserts.dessertOne) {
-        orderObject.orderItems.desserts.dessertOne++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.desserts.dessertOne) {
+            orderObject.orderItems.desserts.dessertOne++;
+        } else {
+            orderObject.orderItems.desserts.dessertOne = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.desserts.dessertOne = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.desserts.dessertOne > 1) {
+            orderObject.orderItems.desserts.dessertOne--;
+        } else {
+            delete orderObject.orderItems.desserts.dessertOne;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 dessertTwo.onclick = function(e) {
     //check if Dessert is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.desserts.dessertTwo) {
-        orderObject.orderItems.desserts.dessertTwo++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.desserts.dessertTwo) {
+            orderObject.orderItems.desserts.dessertTwo++;
+        } else {
+            orderObject.orderItems.desserts.dessertTwo = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.desserts.dessertTwo = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.desserts.dessertTwo > 1) {
+            orderObject.orderItems.desserts.dessertTwo--;
+        } else {
+            delete orderObject.orderItems.desserts.dessertTwo;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 dessertThree.onclick = function(e) {
     //check if Dessert is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.desserts.dessertThree) {
-        orderObject.orderItems.desserts.dessertThree++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.desserts.dessertThree) {
+            orderObject.orderItems.desserts.dessertThree++;
+        } else {
+            orderObject.orderItems.desserts.dessertThree = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.desserts.dessertThree = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.desserts.dessertThree > 1) {
+            orderObject.orderItems.desserts.dessertThree--;
+        } else {
+            delete orderObject.orderItems.desserts.dessertThree;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 dessertFour.onclick = function(e) {
     //check if Dessert is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.desserts.dessertFour) {
-        orderObject.orderItems.desserts.dessertFour++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.desserts.dessertFour) {
+            orderObject.orderItems.desserts.dessertFour++;
+        } else {
+            orderObject.orderItems.desserts.dessertFour = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.desserts.dessertFour = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.desserts.dessertFour > 1) {
+            orderObject.orderItems.desserts.dessertFour--;
+        } else {
+            delete orderObject.orderItems.desserts.dessertFour;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 dessertFive.onclick = function(e) {
     //check if Dessert is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.desserts.dessertFive) {
-        orderObject.orderItems.desserts.dessertFive++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.desserts.dessertFive) {
+            orderObject.orderItems.desserts.dessertFive++;
+        } else {
+            orderObject.orderItems.desserts.dessertFive = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.desserts.dessertFive = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.desserts.dessertFive > 1) {
+            orderObject.orderItems.desserts.dessertFive--;
+        } else {
+            delete orderObject.orderItems.desserts.dessertFive;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 drinkOne.onclick = function(e) {
     //check if Drink is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.drinks.drinkOne) {
-        orderObject.orderItems.drinks.drinkOne++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.drinks.drinkOne) {
+            orderObject.orderItems.drinks.drinkOne++;
+        } else {
+            orderObject.orderItems.drinks.drinkOne = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.drinks.drinkOne = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.drinks.drinkOne > 1) {
+            orderObject.orderItems.drinks.drinkOne--;
+        } else {
+            delete orderObject.orderItems.drinks.drinkOne;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 drinkTwo.onclick = function(e) {
     //check if Drink is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.drinks.drinkTwo) {
-        orderObject.orderItems.drinks.drinkTwo++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.drinks.drinkTwo) {
+            orderObject.orderItems.drinks.drinkTwo++;
+        } else {
+            orderObject.orderItems.drinks.drinkTwo = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.drinks.drinkTwo = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.drinks.drinkTwo > 1) {
+            orderObject.orderItems.drinks.drinkTwo--;
+        } else {
+            delete orderObject.orderItems.drinks.drinkTwo;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 drinkThree.onclick = function(e) {
     //check if Drink is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.drinks.drinkThree) {
-        orderObject.orderItems.drinks.drinkThree++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.drinks.drinkThree) {
+            orderObject.orderItems.drinks.drinkThree++;
+        } else {
+            orderObject.orderItems.drinks.drinkThree = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.drinks.drinkThree = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.drinks.drinkThree > 1) {
+            orderObject.orderItems.drinks.drinkThree--;
+        } else {
+            delete orderObject.orderItems.drinks.drinkThree;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 drinkFour.onclick = function(e) {
     //check if Drink is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.drinks.drinkFour) {
-        orderObject.orderItems.drinks.drinkFour++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.drinks.drinkFour) {
+            orderObject.orderItems.drinks.drinkFour++;
+        } else {
+            orderObject.orderItems.drinks.drinkFour = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.drinks.drinkFour = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.drinks.drinkFour > 1) {
+            orderObject.orderItems.drinks.drinkFour--;
+        } else {
+            delete orderObject.orderItems.drinks.drinkFour;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
 drinkFive.onclick = function(e) {
     //check if Drink is already in order
     //if yes, increase amount
-    if (orderObject.orderItems.drinks.drinkFive) {
-        orderObject.orderItems.drinks.drinkFive++;
+    if (!deleteEnabled){
+        if (orderObject.orderItems.drinks.drinkFive) {
+            orderObject.orderItems.drinks.drinkFive++;
+        } else {
+            orderObject.orderItems.drinks.drinkFive = 1;
+            this.style.borderStyle = 'inset';
+        }
     } else {
-        orderObject.orderItems.drinks.drinkFive = 1;
-        this.style.borderStyle = 'inset';
-    }
+        if (orderObject.orderItems.drinks.drinkFive > 1) {
+            orderObject.orderItems.drinks.drinkFive--;
+        } else {
+            delete orderObject.orderItems.drinks.drinkFive;
+            this.style.borderStyle = 'none';
+        }
+    }  
+    displayOrderHtml(orderObject);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -543,26 +790,59 @@ deleteBtn.onclick = function (e) {
 
 
 
-
-
-
-
-//CompleteOrder Button Function
-completeOrder.onclick = function(e){
-    console.log(orderObject);
+function displayOrderHtml(orderObject) {
     //add new html elements for each objectItem in objectOrder
-    // const displayOrderSection = document.getElementById('display-order');
-    // for (let prop in orderObject.orderItems) {
-    //     for (let innerProp in prop) {
-    //         const pElement = document.createElement('p');
-    //         pElement.innerText = `${innerProp}: ${innerProp.value}`;
-    //         displayOrderSection.appendChild(pElement);
-    //     }
-    // }
+    const displayOrderSection = document.getElementById('display-order');
+    const menuGroupValuesObject = Object.values(orderObject.orderItems);
+    //const foodAmount = Object.values(innerProp);
 
-    orderCounter++;
-    orderObject.orderNumber = orderCounter;
+    //delete previous option values
+    const childrenLength = displayOrderSection.children.length;
+    for (let i = 0; i < childrenLength; i++) {
+      displayOrderSection.lastChild.remove();
+    }
+    //add in the new html elements for current order
+    //each for loop iteration represents one menuGroup
+    for (let innerProp = 0; innerProp < menuGroupValuesObject.length; innerProp++) {
+      //creates arrays 
+      const foodName = Object.keys(menuGroupValuesObject[innerProp]);
+      const foodAmount = Object.values(menuGroupValuesObject[innerProp]);
+      for (let foodNameItem = 0; foodNameItem < foodName.length; foodNameItem++) {
+        const htmlString = foodName[foodNameItem] + ' x ' + foodAmount[foodNameItem];
+        const pElement = document.createElement('p');
+        pElement.innerText = htmlString;
+        displayOrderSection.appendChild(pElement);
+      }
+
+      //add hr (ie a line) to break up each item ... only if that menuGroup had items
+      if (foodName.length > 0) {
+        const hrElement = document.createElement('hr');
+        displayOrderSection.appendChild(hrElement);
+      }
+    }
+
+    //export objectOrder w/ JSON (rn localStorage)
+    function saveToJsonFile(orderObjectCompleted) {
+      let orderObjectJson = JSON.stringify(orderObjectCompleted);
+      //alert(orderObjectJson);
+      //console.log(orderObjectJson);
+      
+      const keyValue = new String(orderObjectCompleted.orderNumber);
+      localStorage.setItem(keyValue, orderObjectJson);
+      //localStorage.clear() to clear 
+    }
+
+    saveToJsonFile(orderObject);
 }
+
+//SubmitOrder Button Function
+submit.addEventListener('click', function() {
+  const stringOrder = 'Your order ' + orderCounter + ' is done. You will return home.' ; 
+  alert(stringOrder);
+  window.location.href = '../index.html';
+})
+
+
 
 
 

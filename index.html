@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Restaurant Ordering</title>
 </head>
@@ -14,11 +14,13 @@
     </header>
     <div class='buttons'>
         <div id='new-order'>
-            <button id='new-order-button' onclick="window.location.href = 'Pages/new-order.html'">New Order</button>
+            <!--<button id='new-order-button' onclick="window.location.href = 'Pages/new-order.html'">New Order</button>-->
+            <button id='new-order-button'>New Order</button>
         </div>
         <div id='existing-orders'>
-            <button onclick="window.location.href = 'Pages/existing-orders.html'">Existing Orders</button>
+            <button id="xisting-orders">Existing Orders</button>
         </div>
+        <button id="delete-local-storage">Delete local storage</button>
     </div>
 </body>
 </html>
